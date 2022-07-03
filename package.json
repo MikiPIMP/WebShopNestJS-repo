@@ -1,8 +1,8 @@
 {
   "name": "web-shop",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Web aplikacija - web shop (vezba za Hakaton)",
+  "author": "IT-Tim, PBG; <Milan Minic [milan.mm.minic@gmail.com], Ognjen Bozic[], Ilija Popovic[], Stefan Radivojevic[]>",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
