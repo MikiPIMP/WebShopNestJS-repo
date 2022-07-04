@@ -1,0 +1,6 @@
+#Milan: [04.07.2022. u 12h]
+#Ovo je fajl u kome pobrajamo sve fajlove i foldere u app za koje zelimo da ne vaze linter pravila
+#---------------------------------
+
+src
+README.md
