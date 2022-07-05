@@ -1,0 +1,12 @@
+docker build -t ime-paketa-image .
+
+docker run -dp 3000:3000 ime-paketa-image
+
+ZA DOCKERFILE:
+
+FROM node:12-alpine
+RUN apk add --no-cache python2 g++ make
+WORKDIR /web-shop
+COPY . .
+RUN npm install --production
+CMD ["node", "src/main.ts"]
