@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Bitno da radi!!
         </a>
       </header>
     </div>
@@ -24,3 +24,9 @@ function App() {
 }
 
 export default App;
+
+//------------------------------------
+//Milan: [06.07.2022. u 20h]
+//Radi na localhostu, port 3000
+//Pokrece se: npm start
+//------------------------------------
