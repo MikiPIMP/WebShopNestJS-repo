@@ -1,32 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Bitno da radi!!
-        </a>
+        <p>Bitno da radi!!</p>
       </header>
     </div>
   );
 }
 
 export default App;
-
-//------------------------------------
-//Milan: [06.07.2022. u 20h]
-//Radi na localhostu, port 3000
-//Pokrece se: npm start
-//------------------------------------
