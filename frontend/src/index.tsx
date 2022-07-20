@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -19,6 +19,6 @@ reportWebVitals();
 
 //------------------------------------
 //Milan: [06.07.2022. u 20h]
-//Radi na localhostu, port 3000
+//Radi na localhostu, port 8000
 //Pokrece se: yarn start (moze i sa: npm start)
 //------------------------------------
