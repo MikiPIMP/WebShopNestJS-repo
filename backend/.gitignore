@@ -36,3 +36,4 @@ lerna-debug.log*
 
 # Config folder
 ./config/
+./backend/config/
