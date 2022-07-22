@@ -8,6 +8,7 @@ import 'jquery/dist/jquery.js';
 import 'popper.js/dist/popper.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
+import { MainMenu } from './components/MainMenu/MainMenu';
 
 
 const root = ReactDOM.createRoot(
@@ -16,6 +17,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    <MainMenu></MainMenu>
     <App />
   </React.StrictMode>
 );
