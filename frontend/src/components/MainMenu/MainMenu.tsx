@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-useless-constructor */
 import React from "react";
 import { Container, Nav } from "react-bootstrap";
-import { BrowserRouter } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { HashRouter, Link } from "react-router-dom";
 
 export class MainMenuItem {
     text: string = '';
@@ -44,9 +42,9 @@ export class MainMenu extends React.Component<MainMenuProperties> {
         return(
             <Container>
                 <Nav variant="tabs">
-                    <BrowserRouter>
+                    <HashRouter>
                         { this.state.items.map(this.makeNavLink) }
-                    </BrowserRouter>
+                    </HashRouter>
                 </Nav>
             </Container>
         );

@@ -9,10 +9,9 @@ import 'popper.js/dist/popper.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
 import { MainMenu, MainMenuItem } from './components/MainMenu/MainMenu';
-import { Route, Routes} from 'react-router-dom';
+import { HashRouter, Route, Routes} from 'react-router-dom';
 import ContactPage from './components/ContactPage/ContactPage';
 import UserLoginPage from './components/UserLoginPage/UserLoginPage';
-import { BrowserRouter } from 'react-router-dom';
 
 
 const menuItems = [
@@ -28,13 +27,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <MainMenu items = { menuItems }></MainMenu>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path='/' element={ <HomePage /> } />
         <Route path='/contact' element={ <ContactPage /> } />
         <Route path='/user/login' element={ <UserLoginPage /> } />  
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
 
