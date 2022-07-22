@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-useless-constructor */
 import React from "react";
 import { Container, Nav } from "react-bootstrap";
+import { BrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export class MainMenuItem {
-    text: string = "";
-    link: string = "#";
+    text: string = '';
+    link: string = '#';
 
     constructor(text: string, link: string) {
         this.text = text;
@@ -42,9 +44,9 @@ export class MainMenu extends React.Component<MainMenuProperties> {
         return(
             <Container>
                 <Nav variant="tabs">
-                    {
-                        this.state.items.map(this.makeNavLink)
-                    }
+                    <BrowserRouter>
+                        { this.state.items.map(this.makeNavLink) }
+                    </BrowserRouter>
                 </Nav>
             </Container>
         );
@@ -52,9 +54,9 @@ export class MainMenu extends React.Component<MainMenuProperties> {
 
     private makeNavLink(item: MainMenuItem) {
         return(
-            <Nav.Link href={ item.link }>
+            <Link to={ item.link } className="nav-link">
                 { item.text }
-            </Nav.Link>
+            </Link>
         );
     }
 }
