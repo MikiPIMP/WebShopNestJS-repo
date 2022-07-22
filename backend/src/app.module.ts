@@ -3,8 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseConfiguration } from 'config/database.configuration';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ProductsModule } from './products/products.module';
-import { Products } from 'entities/products.entity';
+
 
 @Module({
   imports: [
@@ -15,10 +14,9 @@ import { Products } from 'entities/products.entity';
       username: DatabaseConfiguration.username,
       password: DatabaseConfiguration.password,
       database: DatabaseConfiguration.database,
-      entities: [Products],
-      synchronize: true  //Milan: PL: #039 sve do 20min
-    }),
-    ProductsModule
+      entities: [],
+      synchronize: false  //Milan: PL: #039 sve do 20min
+    })
   ],
   controllers: [AppController],
   providers: [AppService],
