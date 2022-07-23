@@ -8,10 +8,10 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Category } from "./category.entity";
-import { ArticleFeature } from "./articlefeature.entity";
-import { ArticlePrice } from "./articleprice.entity";
+import { ArticleFeature } from "./article-feature.entity";
+import { ArticlePrice } from "./article-price.entity";
 import { Photo } from "./photo.entity";
-import { CartArticle } from "./cartarticle.entity";
+import { CartArticle } from "./cart-article.entity";
 
 @Index("uq_article_title", ["title"], { unique: true })
 @Index("fk_article_category_id", ["categoryId"], {})

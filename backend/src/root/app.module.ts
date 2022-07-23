@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseConfiguration } from 'config/database.configuration';
+import { AdminModule } from 'src/admin/admin.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -15,8 +16,10 @@ import { AppService } from './app.service';
       password: DatabaseConfiguration.password,
       database: DatabaseConfiguration.database,
       entities: [],
-      synchronize: false  //Milan: PL: #039 sve do 20min
-    })
+      synchronize: false,  //Milan: PL: #039 sve do 20min
+      autoLoadEntities: true
+    }),
+    AdminModule
   ],
   controllers: [AppController],
   providers: [AppService],
