@@ -4,7 +4,7 @@ import { Administrator } from 'entities/administrator.entity';
 import { AddAdminDto } from 'src/dto/admin/add.admin.dto';
 import { EditAdminDto } from 'src/dto/admin/edit.administrator.dto';
 const crypto = require('crypto')
-import { Repository } from 'typeorm';
+import { Admin, Repository } from 'typeorm';
 
 @Injectable()
 export class AdminService {
@@ -41,8 +41,11 @@ export class AdminService {
         return this.adminRepository.save(admin)
     }
 
-    async remove(id: number): Promise<void>{
-        await this.adminRepository.delete({ administratorId: id })
+    async remove(id: number): Promise<Administrator>{
+        let admin: Administrator = await this.adminRepository.findOneBy({ administratorId: id })
+        admin.isActive = 0
+        
+        return this.adminRepository.save(admin)
     }
 
 }
