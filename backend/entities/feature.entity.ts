@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Category } from "./category.entity";
-import { ArticleFeature } from "./articlefeature.entity";
+import { ArticleFeature } from "./article-feature.entity";
 
 @Index("uq_feature_name_category_id", ["name", "categoryId"], { unique: true })
 @Index("fk_feature_category_id", ["categoryId"], {})
