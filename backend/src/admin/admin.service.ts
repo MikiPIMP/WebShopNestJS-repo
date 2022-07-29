@@ -3,8 +3,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Administrator } from 'entities/administrator.entity';
 import { AddAdminDto } from 'src/dto/admin/add.admin.dto';
 import { EditAdminDto } from 'src/dto/admin/edit.administrator.dto';
+import { ApiResponse } from 'src/misc/api.response.class';
 const crypto = require('crypto')
-import { Admin, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
+
 
 @Injectable()
 export class AdminService {
@@ -17,11 +19,17 @@ export class AdminService {
         return this.adminRepository.find();
     }
 
-    findOne(id: number): Promise<Administrator>{
-        return this.adminRepository.findOneBy({ administratorId: id })
+    async findOne(id: number): Promise<Administrator | ApiResponse>{
+        const admin: Administrator = await this.adminRepository.findOneBy({ administratorId: id })
+        if(admin === null){
+            const response: ApiResponse = new ApiResponse("error", -1001, "Admin does not exist");
+            return response
+        }else{
+            return admin
+        }
     }
 
-    add(data: AddAdminDto): Promise<Administrator>{
+    add(data: AddAdminDto): Promise<Administrator | ApiResponse>{
         let passwordHash = crypto.createHash('sha512');
         let passwordHashString = passwordHash.update(data.password).digest('hex');
         
@@ -29,23 +37,44 @@ export class AdminService {
         newAdmin.username = data.username;
         newAdmin.passwordHash = passwordHashString;
 
-        return this.adminRepository.save(newAdmin)
+        return new Promise(resolve => {
+
+            this.adminRepository.save(newAdmin)
+            .then(data => resolve(data))
+            .catch(error => {
+                const response: ApiResponse = new ApiResponse("error", -1002, "Admin with that username already exists");
+                resolve(response);
+            })
+        });
     }
 
-    async editById(id: number, data: EditAdminDto): Promise<Administrator>{
+    async editById(id: number, data: EditAdminDto): Promise<Administrator | ApiResponse>{
         let admin: Administrator = await this.adminRepository.findOneBy({ administratorId: id })
-        let passwordHash = crypto.createHash('sha512');
-        let passwordHashString = passwordHash.update(data.password).digest('hex');
-        admin.passwordHash = passwordHashString;
-        
-        return this.adminRepository.save(admin)
+
+        if(admin === null){
+            const response: ApiResponse = new ApiResponse("error", -1003, "Admin does not exist");
+            return response
+        }else{
+            let passwordHash = crypto.createHash('sha512');
+            let passwordHashString = passwordHash.update(data.password).digest('hex');
+            admin.passwordHash = passwordHashString;
+            
+            return this.adminRepository.save(admin)
+        }
+
+
     }
 
-    async remove(id: number): Promise<Administrator>{
+    async remove(id: number): Promise<Administrator | ApiResponse>{
         let admin: Administrator = await this.adminRepository.findOneBy({ administratorId: id })
-        admin.isActive = 0
-        
-        return this.adminRepository.save(admin)
+
+        if(admin === null){
+            const response: ApiResponse = new ApiResponse("error", -1004, "Admin does not exist");
+            return response
+        }else{
+            admin.isActive = 0
+            return this.adminRepository.save(admin)
+        }
     }
 
 }
