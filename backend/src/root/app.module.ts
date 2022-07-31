@@ -16,6 +16,7 @@ import { User } from 'entities/user.entity';
 import { AdminModule } from 'src/admin/admin.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ArticleModule } from 'src/article/article.module';
 
 
 @Module({
@@ -44,7 +45,8 @@ import { AppService } from './app.service';
       autoLoadEntities: true
     }),
     AdminModule,
-    CategoryModule
+    CategoryModule,
+    ArticleModule
   ],
   controllers: [AppController],
   providers: [AppService],
